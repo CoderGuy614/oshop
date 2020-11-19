@@ -1,3 +1,5 @@
+import { AuthGuardService } from './auth-guard.service';
+import { AuthService } from './auth.service';
 
 import {environment} from './../environments/environment'
 import { BrowserModule } from '@angular/platform-browser';
@@ -53,26 +55,26 @@ import {LoginComponent} from './login/login.component'
         path: 'shopping-cart', component: ShoppingCartComponent
       },
       {
-        path: 'check-out', component: CheckOutComponent
-      }, 
-      {
-        path: 'order-success', component: OrderSuccessComponent
-      },
-      {
         path: 'login', component: LoginComponent
       },
       {
-        path: 'admin/products', component: AdminProductsComponent
+        path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuardService]
       }, 
       {
-        path: 'admin/orders', component: AdminOrdersComponent
+        path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuardService]
       },
       {
-        path: 'my/orders', component: MyOrdersComponent
+        path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuardService]
+      }, 
+      {
+        path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuardService]
+      },
+      {
+        path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuardService]
       }
     ])
   ],
-  providers: [],
+  providers: [AuthService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
