@@ -14,8 +14,7 @@ export class AuthService {
   login() {
     let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || "/";
     localStorage.setItem('returnUrl', returnUrl)
-    this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(() => {
-      this.router.navigateByUrl(returnUrl)})
+    this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
   }
 
   logout() {
