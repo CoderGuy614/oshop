@@ -1,3 +1,4 @@
+import { UserService } from './../user.service';
 import { AuthService } from './../auth.service';
 import { Component } from '@angular/core';
 
@@ -8,12 +9,16 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
-  constructor(private auth: AuthService) {
+  constructor(private auth: AuthService, private userService: UserService ) {
 
    }
 
   login() {
     this.auth.login()
+  }
+
+  getUser() {
+    return this.userService.getUser('5NAeTaryyxbBLfZr4p4cO3Yyrs72')
   }
 
 }

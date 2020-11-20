@@ -9,18 +9,19 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminAuthGuardService implements CanActivate {
+export class AdminAuthGuardService {
 
-  constructor(private auth: AuthService, private userService: UserService) { }
+  // constructor(private auth: AuthService, private userService: UserService) { }
 
-  canActivate(): Observable<boolean> {
-    // this.auth.user$.pipe(map(user => {
-    //   this.userService.get(user.uid)
-    // }) )
+  // canActivate(): Observable<boolean> {
+  //   // this.auth.user$.pipe(map(user => {
+  //   //   this.userService.get(user.uid)
+  //   // }) )
 
-    return this.auth.user$
-    .switchMap(user => this.userService.get(user.uid))
+  //   // let myUser = this.auth.user$.pipe(switchMap(user => {
+  //   // this.userService.get(user.uid)
+  //   // }))
 
-  }
+  // }
 
 }

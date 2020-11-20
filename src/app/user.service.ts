@@ -3,7 +3,7 @@ import {AppUser} from './models/app-user'
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import firebase from 'firebase/app'
-import { flatMap } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +19,10 @@ export class UserService {
     }).then(() => console.log("USER SUCCESSFULLY CREATED IN FIRESTORE")).catch(() => console.log("FIRESTORE COULDN'T SAVE THE USER"))
   }
 
-  get(uid: string) {
-    return this.db.collection('users', ref => ref.where('uid', '==', uid).limit(1)).valueChanges().pipe(flatMap(users => users))
+  getUser(uid: string) {
+    
+    return this.db.collection('users').valueChanges().subscribe(x => console.log(x))
+    
 
   }
 
